@@ -4,6 +4,7 @@
   Date:    30 August 2013
   Description:  This file implements the driver
                 program for this assignment.
+				Hey guys, just wanted to show you that you can open the file and resave it in the same place, You just have to commit it after you save it.
 */
 
 #include "card.h"
