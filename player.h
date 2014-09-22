@@ -21,7 +21,7 @@ class Player()
 public:
 	Player ();
 	Player (vector<Card> deck);
-	void addCard(Card);
+	void addCard(Card a);
 	Card playCard();
 	int numCards();
 	//void shuffleDeck();		Same issue as below, otherwise just push_back
