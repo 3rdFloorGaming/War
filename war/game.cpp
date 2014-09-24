@@ -29,14 +29,14 @@ string compareCards(Card p1, Card p2)
 //Makes deck
 vector<Card> makeDeck()
 {
-	vector<Card> deck;
+    vector<Card> deck;
 
-	//For loop that populates deck
+    //For loop that populates deck
     for (int j=0; j<13; j++) 
-	{
+    {
         for (int i=0; i<4; i++) 
-		{
-			deck.push_back(Card(Value(j), Suit(i)));
+	{
+		deck.push_back(Card(Value(j), Suit(i)));
         }               
     }
 
