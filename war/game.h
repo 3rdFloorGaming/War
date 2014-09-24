@@ -1,37 +1,26 @@
-/*
-  File: game.h
-  Author(s):  Garth Murray, Connor Grumling, Zatch Alford, Zac Crane
-  Course:  COMP 220, Computer Programming II
-  Date:    21 September 2014
-  Description:  This file provides the definitions of needed functions
-				for the core War Card Game.
-*/
-
-#ifndef ___GAME_H
-#define ___GAME_H
-
-#include <iostream>
-#include <vector>
-#include <string>
-#include <algorithm>
-#include <ctime>
-#include <cstdlib>
-#include <iterator>
-#include "Card.h"
-
-using std::vector;
-using std::cout;
-using std::cin;
-using std::endl;
-using std::random_shuffle;
-using std::make_move_iterator;
 
 
+//string compareCards(Card p1, Card p2); //Compares cards played by each player
 
-string compareCards(Card p1, Card p2); //Compares cards played by each player
-void playGame(); //Runs game simulation
+//vector<Card> makeDeck(); //Creates deck to use in game
 
-vector<Card> makeDeck(); //Creates deck to use in game
+
+class Game
+{
+public:
+	//Runs war card game simulation
+	void playGame();
+	//Compares cards played by each player
+	string compareCards(Card p1, Card p2);
+	//Creates deck to use in game
+	vector<Card> makeDeck();
+	int getP1_Score() {return p1_score;}
+	int getP2_Score() {return p2_score;}
+private:
+	int p1_score;
+	int p2_score;
+};
+
 
 /*
 vector <Card> makeShuffledDeck()
