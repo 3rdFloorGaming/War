@@ -2,8 +2,6 @@
     CONSOLE APPLICATION : war Project Overview
 ========================================================================
 
-AppWizard has created this war application for you.
-
 This file contains a summary of what you will find in each of the files that
 make up your war application.
 
@@ -34,7 +32,11 @@ StdAfx.h, StdAfx.cpp
 /////////////////////////////////////////////////////////////////////////////
 Other notes:
 
-AppWizard uses "TODO:" comments to indicate parts of the source code you
-should add to or customize.
 
 /////////////////////////////////////////////////////////////////////////////
+
+TODO: 
+Flesh out player.cpp
+Expand war.cpp
+
+
