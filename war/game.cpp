@@ -14,9 +14,8 @@ using std::vector;
 using std::random_shuffle;
 using std::make_move_iterator;
 
-void givePlayersCards( vector <Card> &p1, vector <Card> &p2)
+vector <Card> makeShuffledDeck()//This function returns a vector of a shuffled deck. Every time it is called it will return a different deck.
 {
-	//Creates deck that players will use
 	vector<Card> deck;
 
 	//For loop that populates deck
@@ -29,24 +28,65 @@ void givePlayersCards( vector <Card> &p1, vector <Card> &p2)
     }
 
 	//Random seed used for shuffling deck
-	srand(time(0));
+	srand (time(NULL));
+	int myrandom = rand() % 1000000;  
 
 	//Shuffles deck
-	random_shuffle(deck.begin(), deck.end(), myrandom();
+	random_shuffle(deck.begin(), deck.end(), myrandom);
+
+	return deck;
+}
+
+void givePlayersCards( vector <Card> &p1, vector <Card> &p2) //
+{
+
+	vector <Card> deck = makeShuffledDeck();
+	int numPlayers = 2;
 
 	//Splits deck into two player decks
-	vector<Card> player1(make_move_iterator(deck.begin() + deck.size()/2), make_move_iterator(deck.end()));
-	//Erases half of original deck that has been given to player 2's deck
-	deck.erase(deck.begin() + deck.size()/2, deck.end());
+	vector<Card> player1(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
+	//Erases half of original deck that has been given to player 1's deck
+	deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
 	//Fills player2 deck with remaining cards
-	vector<Card> player2(make_move_iterator(deck.begin() + deck.size(), make_move_iterator(deck.end()));
+	vector<Card> player2(make_move_iterator(deck.begin() + deck.size()), make_move_iterator(deck.end()));
+	//Assign and change the player decks
+	p1=player1;
+	p2=player2;
 }
-void givePlayersCards( vector <Card> &p1, vector <Card> &p2, vector <Card> &p3) //Overloaded to accamodate any number of players
-void givePlayersCards( vector <Card> &p1, vector <Card> &p2, vector <Card> &p3, vector <Card> &p4) //Will need to be different code than 
-string compareCards(Card p1, Card p2); //Stuff in comments will go in game.cpp
+void givePlayersCards( vector <Card> &p1, vector <Card> &p2, vector <Card> &p3) //Overloaded to accamodate any 2-4 players
+{
+	vector <Card> deck = makeShuffledDeck();
+	int numPlayers = 3;
 
-//Comparison test (compares last card in player decks and pops cards after comparison)
-string compareCards(Card p1, Card p2)
+	vector<Card> player1(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
+	deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
+	vector<Card> player2(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
+	deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
+	vector<Card> player3(make_move_iterator(deck.begin() + deck.size()), make_move_iterator(deck.end()));
+	p1=player1;
+	p2=player2;
+	p3=player3;
+}
+void givePlayersCards( vector <Card> &p1, vector <Card> &p2, vector <Card> &p3, vector <Card> &p4)
+{
+
+	vector <Card> deck = makeShuffledDeck();
+	int numPlayers = 4;
+
+	vector<Card> player1(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
+	deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
+	vector<Card> player2(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
+	deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
+	vector<Card> player3(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
+	deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
+	vector<Card> player4(make_move_iterator(deck.begin() + deck.size()), make_move_iterator(deck.end()));
+	p1=player1;
+	p2=player2;
+	p3=player3;
+	p4=player4;
+}
+
+string compareCards(Card p1, Card p2)//Comparison test (compares last card in player decks and pops cards after comparison)
 {
 	if(p1.getValue() > p2.getValue())
 	{		

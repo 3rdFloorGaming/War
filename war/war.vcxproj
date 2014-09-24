@@ -88,8 +88,9 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Desktop\War Objects\card.cpp" />
+    <ClCompile Include="card.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="war.cpp" />
   </ItemGroup>
