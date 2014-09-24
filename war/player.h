@@ -11,7 +11,6 @@ Z
 #include <vector>
 #include "card.h"
 #include "card.cpp"
-#include "player.cpp"
 using std::vector;
 
 
@@ -19,7 +18,7 @@ class Player()
 {
 public:
 	Player ();
-	Player (vector<Card> deck);
+	Player (vector<Card> deckA);
 	void addCard(Card a);
 	Card playCard();
 	int numCards();
