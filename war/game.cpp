@@ -6,11 +6,13 @@
 */
 
 #include "game.h"
+
+
 //Random generator function
 int myrandom (int i) { return std::rand()%i;}
 
 //Function that compares cards played by each player
-string compareCards(Card p1, Card p2)
+string Game::compareCards(Card p1, Card p2)
 {
 	if(p1.getValue() > p2.getValue())
 	{		
@@ -27,16 +29,16 @@ string compareCards(Card p1, Card p2)
 }
 
 //Makes deck
-vector<Card> makeDeck()
+vector<Card> Game::makeDeck()
 {
-    vector<Card> deck;
+	vector<Card> deck;
 
-    //For loop that populates deck
+	//For loop that populates deck
     for (int j=0; j<13; j++) 
-    {
-        for (int i=0; i<4; i++) 
 	{
-		deck.push_back(Card(Value(j), Suit(i)));
+        for (int i=0; i<4; i++) 
+		{
+			deck.push_back(Card(Value(j), Suit(i)));
         }               
     }
 
@@ -48,7 +50,7 @@ vector<Card> makeDeck()
 
 
 //Function that runs game simulation
-void playGame()
+void Game::playGame()
 {
 	//Random seed used for shuffling deck
 	srand(time(0));
@@ -138,6 +140,8 @@ void playGame()
 		cout << "It's a tie!!!" << endl;
 	}
 }
+
+
 
 //Program runs without anything beneath here, though we probably still need to implement and use these.
 
