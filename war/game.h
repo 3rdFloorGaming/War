@@ -1,7 +1,9 @@
 
 
-//string compareCards(Card p1, Card p2); //Compares cards played by each player
 
+#ifndef ___GAME_H
+#define ___GAME_H
+//string compareCards(Card p1, Card p2); //Compares cards played by each player
 //vector<Card> makeDeck(); //Creates deck to use in game
 
 
