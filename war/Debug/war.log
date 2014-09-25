@@ -1,17 +1,8 @@
-﻿Build started 9/25/2014 4:12:37 PM.
-     1>Project "C:\Users\AlfordZW1\Desktop\War\war\war.vcxproj" on node 2 (Build target(s)).
-     1>InitializeBuildStatus:
-         Creating "Debug\war.unsuccessfulbuild" because "AlwaysCreate" was specified.
-       ClCompile:
-         All outputs are up-to-date.
-       Link:
-         All outputs are up-to-date.
-         war.vcxproj -> C:\Users\AlfordZW1\Desktop\War\Debug\war.exe
-       FinalizeBuildStatus:
-         Deleting file "Debug\war.unsuccessfulbuild".
-         Touching "Debug\war.lastbuildstate".
-     1>Done Building Project "C:\Users\AlfordZW1\Desktop\War\war\war.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:00.06
+﻿  war.cpp
+  stdafx.cpp
+  player.cpp
+  game.cpp
+  card.cpp
+  Generating Code...
+  LINK : C:\Users\craneza1\Documents\GitHub\War\Debug\war.exe not found or not built by the last incremental link; performing full link
+  war.vcxproj -> C:\Users\craneza1\Documents\GitHub\War\Debug\war.exe
