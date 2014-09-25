@@ -19,14 +19,9 @@ class Player
 public:
 	Player ();
 	Player (vector<Card> deckA);
-	void addCard(Card a);
-	Card playCard();
 	int numCards();
-	//void shuffleDeck();		Same issue as below, otherwise just push_back
 private:
 	vector<Card> deck;
-	//vector<Card>() discard;	only use this line if we are going
-	//							to shuffle the cards that a player wins
 };
 
 #endif
