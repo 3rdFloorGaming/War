@@ -8,8 +8,27 @@
 #include "game.h"
 
 
-//Random generator function
-int myrandom (int i) { return std::rand()%i;}
+
+//Makes deck
+vector<Card> Game::makeDeck()
+{ 
+
+	vector<Card> deck;
+
+	//For loop that populates deck
+    for (int j=0; j<13; j++) 
+	{
+        for (int i=0; i<4; i++) 
+		{
+			deck.push_back(Card(Value(j), Suit(i)));
+        }               
+    }
+
+	//Shuffles deck
+	random_shuffle(deck.begin(), deck.end());
+
+	return deck;
+}
 
 //Function that compares cards played by each player
 string Game::compareCards(Card p1, Card p2)
@@ -28,32 +47,11 @@ string Game::compareCards(Card p1, Card p2)
 	}
 }
 
-//Makes deck
-vector<Card> Game::makeDeck()
-{
-	vector<Card> deck;
-
-	//For loop that populates deck
-    for (int j=0; j<13; j++) 
-	{
-        for (int i=0; i<4; i++) 
-		{
-			deck.push_back(Card(Value(j), Suit(i)));
-        }               
-    }
-
-	//Shuffles deck
-	random_shuffle(deck.begin(), deck.end(), myrandom);
-
-	return deck;
-}
-
-
 //Function that runs game simulation
 void Game::playGame()
 {
 	//Random seed used for shuffling deck
-	srand(time(0));
+	srand(unsigned (time(0)));
 
 	int p1_score = 0;
 	int p2_score = 0;
@@ -130,7 +128,7 @@ void Game::playGame()
 			player2.pop_back();
 
 			//Adds 2 to war_score for both cards played
-			war_score++;
+			war_score+=2;
 
 			do{
 			//Adds "face down" cards to vector
@@ -141,7 +139,7 @@ void Game::playGame()
 			deck.pop_back();
 			player2.pop_back();
 
-			war_score++;
+			war_score+=2;
 
 			//Adds "face up" cards to vector
 			tableStack.push_back(deck.back());
@@ -155,14 +153,14 @@ void Game::playGame()
 			deck.pop_back();
 			player2.pop_back();
 
-			war_score++;
+			war_score+=2;
 
 			}while(compareCards(deck.back(), player2.back()) == "war");
 
 			//Again checks who has "won" the round
 			if((compareCards(deck.back(), player2.back())) == "p1")
 			{
-				cout << "Player 1 wins!\n";
+				cout << "Player 1 wins war!\n";
 				//Adds all of the cards used in the war to player 1's deck
 				deck.insert(deck.begin(),tableStack.begin(), tableStack.end());
 				p1_score += war_score;
@@ -212,7 +210,7 @@ void Game::playGame()
 
 
 
-//Program runs without anything beneath here, though we probably still need to implement and use these.
+//Functions to allow 2-4 players, incompatible with the rest of code in game.cpp (major reconstruction needed to implement these)
 
 /*
 vector <Card> makeShuffledDeck()//This function returns a vector of a shuffled deck. Every time it is called it will return a different deck.
@@ -286,19 +284,4 @@ void givePlayersCards( vector <Card> &p1, vector <Card> &p2, vector <Card> &p3, 
 	p3=player3;
 	p4=player4;
 }
-
-string compareCards(Card p1, Card p2)//Comparison test (compares last card in player decks and pops cards after comparison)
-{
-	if(p1.getValue() > p2.getValue())
-	{		
-		return "p1";
-	}
-	else if(p1.getValue() < p2.getValue())
-	{
-		return "p2";
-	}
-	else
-	{
-		return "war";
-	}
-}*/
+*/

@@ -20,6 +20,8 @@ public:
 	Player ();
 	Player (vector<Card> deckA);
 	int numCards();
+	int warsWon;
+	int points;
 private:
 	vector<Card> deck;
 };
