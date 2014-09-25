@@ -11,6 +11,7 @@
 
 #include <vector>
 #include "card.h"
+#include "game.h"
 using std::vector;
 
 
@@ -22,7 +23,8 @@ public:
 	int numCards();
 	int warsWon;
 	int points;
-	bool WinsByWars();
+	bool winsByWars();
+	bool lossByCards();
 private:
 	vector<Card> deck;
 };

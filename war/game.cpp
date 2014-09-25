@@ -185,117 +185,117 @@ void Game::playGame()
 			cout << "Player TWO DECK: " << player2.size() << endl;
 		}
 
-		//Checks win by war condition
-		/*
-		if(player1.winsByWars())
-		{
-		cout << "Player 1 has won "<< WARSTOWIN<< "wars!\n";
-		break;
-		}
-		if(player2.winsByWars())
-		{
-		cout << "Player 2 has won "<< WARSTOWIN<< "wars!\n";
-		break;
-		}
-		*/
+
 
 		//Waits for user to press 'Enter' before continuing to next round
 		cin.ignore();
-
+		if(checkForWinner(p1,p2)) break;
 	}
 
-	//Displays final results
-	cout << "Player 1: " << p1_score << endl;
-	cout << "Player 2: " << p2_score << endl;
-
-	if(p1_score > p2_score)
-	{
-		cout << "Player 1 wins the game!" << endl;
-	}
-	else if(p2_score < p1_score)
-	{
-		cout << "Player 2 wins the game!" << endl;
-	}
-	else if(p1_score == p2_score)
-	{
-		cout << "It's a tie!!!" << endl;
-	}
 }
 
+bool checkForWinner(Player p1, Player p2)
+{
+	if(p1.winsByWars())
+	{
+		cout << "Player 1 has won "<< WARSTOWIN<< "wars!\n";
+		cout << "Player 1 wins the game!" << endl;
+		return true;
+	}
+	if(p2.winsByWars())
+	{
+		cout << "Player 2 has won "<< WARSTOWIN<< "wars!\n";
+		cout << "Player 2 wins the game!" << endl;
+		return true;
+	}
+	if(p1.lossByCards())
+	{
+		cout << "Player 1 has no more cards, Player 2 wins the game!" << endl;
+		return true;
+	}
+	if(p2.lossByCards())
+	{
+		cout << "Player 2 has no more cards, Player 1 wins the game!" << endl;
+		return true;
+	}
+	return false;
+}
 
 
 //Functions to allow 2-4 players, incompatible with the rest of code in game.cpp (major reconstruction needed to implement these)
-
 /*
+
 vector <Card> makeShuffledDeck()//This function returns a vector of a shuffled deck. Every time it is called it will return a different deck.
 {
-vector<Card> deck;
+	vector<Card> deck;
 
-//For loop that populates deck
-for (int j=0; j<13; j++) 
-{
-for (int i=0; i<4; i++) 
-{
-deck.push_back(Card(Value(j), Suit(i)));
-}               
+	//For loop that populates deck
+	for (int j=0; j<13; j++) 
+	{
+		for (int i=0; i<4; i++) 
+		{
+			deck.push_back(Card(Value(j), Suit(i)));
+		}               
+	}
+
+	//Random seed used for shuffling deck
+	srand (time(NULL));
+	int myrandom = rand() % 1000000;  
+
+	//Shuffles deck
+	random_shuffle(deck.begin(), deck.end(), myrandom);
+
+	return deck;
 }
 
-//Random seed used for shuffling deck
-srand (time(NULL));
-int myrandom = rand() % 1000000;  
-
-//Shuffles deck
-random_shuffle(deck.begin(), deck.end(), myrandom);
-
-return deck;
-}
-
-void givePlayersCards( vector <Card> &p1, vector <Card> &p2) //
+void givePlayersCards( vector <Card> &p1, vector <Card> &p2) 
 {
 
-vector <Card> deck = makeShuffledDeck();
-int numPlayers = 2;
+	vector <Card> deck = makeShuffledDeck();
+	int numPlayers = 2;
 
-//Splits deck into two player decks
-vector<Card> player1(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
-//Erases half of original deck that has been given to player 1's deck
-deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
-//Fills player2 deck with remaining cards
-vector<Card> player2(make_move_iterator(deck.begin() + deck.size()), make_move_iterator(deck.end()));
-//Assign and change the player decks
-p1=player1;
-p2=player2;
+	//Splits deck into two player decks
+	vector<Card> player1(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
+	//Erases half of original deck that has been given to player 1's deck
+	deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
+	//Fills player2 deck with remaining cards
+	vector<Card> player2(make_move_iterator(deck.begin() + deck.size()), make_move_iterator(deck.end()));
+	//Assign and change the player decks
+	p1=player1;
+	p2=player2;
 }
+
 void givePlayersCards( vector <Card> &p1, vector <Card> &p2, vector <Card> &p3) //Overloaded to accamodate any 2-4 players
 {
-vector <Card> deck = makeShuffledDeck();
-int numPlayers = 3;
+	vector <Card> deck = makeShuffledDeck();
+	int numPlayers = 3;
 
-vector<Card> player1(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
-deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
-vector<Card> player2(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
-deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
-vector<Card> player3(make_move_iterator(deck.begin() + deck.size()), make_move_iterator(deck.end()));
-p1=player1;
-p2=player2;
-p3=player3;
+	vector<Card> player1(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
+	deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
+	vector<Card> player2(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
+	deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
+	vector<Card> player3(make_move_iterator(deck.begin() + deck.size()), make_move_iterator(deck.end()));
+	p1=player1;
+	p2=player2;
+	p3=player3;
 }
+
 void givePlayersCards( vector <Card> &p1, vector <Card> &p2, vector <Card> &p3, vector <Card> &p4)
 {
 
-vector <Card> deck = makeShuffledDeck();
-int numPlayers = 4;
+	vector <Card> deck = makeShuffledDeck();
+	int numPlayers = 4;
 
-vector<Card> player1(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
-deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
-vector<Card> player2(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
-deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
-vector<Card> player3(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
-deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
-vector<Card> player4(make_move_iterator(deck.begin() + deck.size()), make_move_iterator(deck.end()));
-p1=player1;
-p2=player2;
-p3=player3;
-p4=player4;
+	vector<Card> player1(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
+	deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
+	vector<Card> player2(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
+	deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
+	vector<Card> player3(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
+	deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
+	vector<Card> player4(make_move_iterator(deck.begin() + deck.size()), make_move_iterator(deck.end()));
+	p1=player1;
+	p2=player2;
+	p3=player3;
+	p4=player4;
 }
 */

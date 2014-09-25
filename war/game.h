@@ -39,6 +39,9 @@ public:
 	string compareCards(Card p1, Card p2);
 	//Runs war card game simulation
 	void playGame();
+
+	//A function that is part of play game that will check if either player has satisfied win conitions
+	bool checkForWinner();
 };
 
 

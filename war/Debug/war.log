@@ -1,7 +1,9 @@
-﻿  game.cpp
+﻿  war.cpp
+  player.cpp
   Generating Code...
   Compiling...
-  war.cpp
-  player.cpp
-c:\users\craneza1\documents\github\war\war\player.cpp(30): error C2065: 'WARSTOWIN' : undeclared identifier
+  game.cpp
   Generating Code...
+player.obj : error LNK2005: "bool winCondition_winByWars" (?winCondition_winByWars@@3_NA) already defined in game.obj
+war.obj : error LNK2005: "bool winCondition_winByWars" (?winCondition_winByWars@@3_NA) already defined in game.obj
+C:\Users\craneza1\Documents\GitHub\War\Debug\war.exe : fatal error LNK1169: one or more multiply defined symbols found

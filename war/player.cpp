@@ -9,6 +9,7 @@
 
 
 
+
 Player::Player()
 {
 	deck.resize(0);
@@ -29,4 +30,9 @@ bool Player::WinsByWars()
 {
 	if(warsWon>=WARSTOWIN) return true;
 	return false;
+}
+
+bool Player::lossByCards()
+{
+	if(deck.size==0) return true;
 }
