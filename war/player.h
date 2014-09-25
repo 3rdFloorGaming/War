@@ -12,6 +12,7 @@
 #include <vector>
 #include "card.h"
 #include "game.h"
+#include "gamevariables.h"
 using std::vector;
 
 

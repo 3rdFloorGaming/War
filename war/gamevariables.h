@@ -11,19 +11,6 @@
 
 //Allows play with alternate game rules where a player can win by winning a certain number of wars
 bool winCondition_winByWars = true;
-		//Checks win by war condition
-		/*
-		if(player1.winsByWars())
-		{
-		cout << "Player 1 has won "<< WARSTOWIN<< "wars!\n";
-		break;
-		}
-		if(player2.winsByWars())
-		{
-		cout << "Player 2 has won "<< WARSTOWIN<< "wars!\n";
-		break;
-		}
-		*/
 
 //How many wars are needed to win with above game condition
 const int WARSTOWIN = 5; 

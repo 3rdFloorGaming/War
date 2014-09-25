@@ -1,9 +1,2 @@
-﻿  war.cpp
-  player.cpp
-  Generating Code...
-  Compiling...
-  game.cpp
-  Generating Code...
-player.obj : error LNK2005: "bool winCondition_winByWars" (?winCondition_winByWars@@3_NA) already defined in game.obj
-war.obj : error LNK2005: "bool winCondition_winByWars" (?winCondition_winByWars@@3_NA) already defined in game.obj
-C:\Users\craneza1\Documents\GitHub\War\Debug\war.exe : fatal error LNK1169: one or more multiply defined symbols found
+﻿  player.cpp
+c:\users\craneza1\documents\github\war\war\game.h(44): error C2061: syntax error : identifier 'Player'

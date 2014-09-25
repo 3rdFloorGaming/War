@@ -53,11 +53,7 @@ void Game::playGame()
 	//Random seed used for shuffling deck
 	srand(unsigned (time(0)));
 
-	int p1_score = 0;
-	int p2_score = 0;
-
-	//Int that holds total number of points won in a "war" (tie) scenario
-	int war_score = 0;
+	Player p1,p2;
 
 	//Creates deck (note: Original deck will act as player 1's deck)
 	vector<Card> deck = makeDeck();
@@ -66,6 +62,9 @@ void Game::playGame()
 	vector<Card> player2(make_move_iterator(deck.begin() + deck.size()/2), make_move_iterator(deck.end()));
 	//Erases half of original deck that has been given to player 2's deck
 	deck.erase(deck.begin() + deck.size()/2, deck.end());
+
+	p1=deck;
+	p2=player2;
 
 	while(deck.size() > 0 && player2.size() > 0)
 	{
@@ -87,11 +86,11 @@ void Game::playGame()
 			deck.pop_back();
 			player2.pop_back();
 
-			p1_score++;
-
 			//Diplays size of each players' deck.
 			cout << "Player ONE DECK: " << deck.size() << endl;
 			cout << "Player TWO DECK: " << player2.size() << endl;
+			p1=deck;
+			p2=player2;
 		}
 		else if((compareCards(deck.back(), player2.back())) == "p2")
 		{
@@ -103,11 +102,12 @@ void Game::playGame()
 			deck.pop_back();
 			player2.pop_back();
 
-			p2_score++;
 
 			//Diplays size of each players' deck.
 			cout << "Player ONE DECK: " << deck.size() << endl;
 			cout << "Player TWO DECK: " << player2.size() << endl;
+			p1=deck;
+			p2=player2;
 		}
 		else if((compareCards(deck.back(), player2.back())) == "war")
 		{
@@ -127,9 +127,6 @@ void Game::playGame()
 			deck.pop_back();
 			player2.pop_back();
 
-			//Adds 2 to war_score for both cards played
-			war_score+=2;
-
 			do{
 				//Adds "face down" cards to vector
 				tableStack.push_back(deck.back());
@@ -139,7 +136,6 @@ void Game::playGame()
 				deck.pop_back();
 				player2.pop_back();
 
-				war_score+=2;
 
 				//Adds "face up" cards to vector
 				tableStack.push_back(deck.back());
@@ -153,7 +149,6 @@ void Game::playGame()
 				deck.pop_back();
 				player2.pop_back();
 
-				war_score+=2;
 
 			}while(compareCards(deck.back(), player2.back()) == "war");
 
@@ -163,19 +158,18 @@ void Game::playGame()
 				cout << "Player 1 wins war!\n";
 				//Adds all of the cards used in the war to player 1's deck
 				deck.insert(deck.begin(),tableStack.begin(), tableStack.end());
-				p1_score += war_score;
-
+				p1=deck;
+				p2=player2;
 			}
 			else if((compareCards(deck.back(), player2.back())) == "p2")
 			{
 				cout << "Player 2 wins!\n";
 				//Adds all of the cards used in the war to player 1's deck
 				player2.insert(player2.begin(),tableStack.begin(), tableStack.end());
-				p2_score += war_score;
+				p1=deck;
+				p2=player2;
 			}
 
-			//Resets war_score to 0, to prepare for next war
-			war_score = 0;
 
 			//Empties the tableStack vector and prepares it for next war
 			tableStack.clear();
@@ -221,81 +215,3 @@ bool checkForWinner(Player p1, Player p2)
 	return false;
 }
 
-
-//Functions to allow 2-4 players, incompatible with the rest of code in game.cpp (major reconstruction needed to implement these)
-/*
-
-vector <Card> makeShuffledDeck()//This function returns a vector of a shuffled deck. Every time it is called it will return a different deck.
-{
-	vector<Card> deck;
-
-	//For loop that populates deck
-	for (int j=0; j<13; j++) 
-	{
-		for (int i=0; i<4; i++) 
-		{
-			deck.push_back(Card(Value(j), Suit(i)));
-		}               
-	}
-
-	//Random seed used for shuffling deck
-	srand (time(NULL));
-	int myrandom = rand() % 1000000;  
-
-	//Shuffles deck
-	random_shuffle(deck.begin(), deck.end(), myrandom);
-
-	return deck;
-}
-
-void givePlayersCards( vector <Card> &p1, vector <Card> &p2) 
-{
-
-	vector <Card> deck = makeShuffledDeck();
-	int numPlayers = 2;
-
-	//Splits deck into two player decks
-	vector<Card> player1(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
-	//Erases half of original deck that has been given to player 1's deck
-	deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
-	//Fills player2 deck with remaining cards
-	vector<Card> player2(make_move_iterator(deck.begin() + deck.size()), make_move_iterator(deck.end()));
-	//Assign and change the player decks
-	p1=player1;
-	p2=player2;
-}
-
-void givePlayersCards( vector <Card> &p1, vector <Card> &p2, vector <Card> &p3) //Overloaded to accamodate any 2-4 players
-{
-	vector <Card> deck = makeShuffledDeck();
-	int numPlayers = 3;
-
-	vector<Card> player1(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
-	deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
-	vector<Card> player2(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
-	deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
-	vector<Card> player3(make_move_iterator(deck.begin() + deck.size()), make_move_iterator(deck.end()));
-	p1=player1;
-	p2=player2;
-	p3=player3;
-}
-
-void givePlayersCards( vector <Card> &p1, vector <Card> &p2, vector <Card> &p3, vector <Card> &p4)
-{
-
-	vector <Card> deck = makeShuffledDeck();
-	int numPlayers = 4;
-
-	vector<Card> player1(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
-	deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
-	vector<Card> player2(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
-	deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
-	vector<Card> player3(make_move_iterator(deck.begin() + deck.size()/numPlayers), make_move_iterator(deck.end()));
-	deck.erase(deck.begin() + deck.size()/numPlayers, deck.end());
-	vector<Card> player4(make_move_iterator(deck.begin() + deck.size()), make_move_iterator(deck.end()));
-	p1=player1;
-	p2=player2;
-	p3=player3;
-	p4=player4;
-}
-*/
