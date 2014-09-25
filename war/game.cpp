@@ -58,7 +58,7 @@ void Game::playGame()
 	int p1_score = 0;
 	int p2_score = 0;
 
-	//Int that holds total number of points one in a "war" (tie) scenario
+	//Int that holds total number of points won in a "war" (tie) scenario
 	int war_score = 0;
 
 	//Creates deck (note: Original deck will act as player 1's deck)

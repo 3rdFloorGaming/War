@@ -7,17 +7,22 @@
 //vector<Card> makeDeck(); //Creates deck to use in game
 #include <vector>
 #include <string>
-#include "card.h"
-#include "card.cpp"
 #include <ctime>
 #include <iostream>
 #include <algorithm> 
+#include <cstdlib>
+#include <iterator>
+#include "card.h"
+#include "player.h"
+
 using std::cout;
 using std::cin;
 using std::endl;
 using std::ctime;
 using std::vector;
 using std::string;
+using std::random_shuffle;
+using std::make_move_iterator;
 
 
 class Game
