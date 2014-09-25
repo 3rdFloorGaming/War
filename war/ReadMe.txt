@@ -39,4 +39,5 @@ TODO:
 Flesh out player.cpp
 Expand war.cpp
 Move game simulation section from war.cpp to game.cpp as a function
+(Game simulation has been moved)
 
