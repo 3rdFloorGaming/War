@@ -96,7 +96,7 @@ void Game::playGame()
 		else if((compareCards(deck.back(), player2.back())) == "p2")
 		{
 			cout << "Player 2 wins!\n";
-			//Removes card from player 1 and adds it to player 2's deck
+			//Removes card from player 1 adds it to player 2's deck
 			player2.insert(player2.begin(), 1, deck.back());
 			//Inserts player 2's played card back into deck after it has been "won"
 			player2.insert(player2.begin(), 1, player2.back());
@@ -216,7 +216,7 @@ void Game::playGame()
 		*/
 
 		//Waits for user to press 'Enter' before continuing to next round
-		//cin.ignore();
+		cin.ignore();
 
 	}
 
