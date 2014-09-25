@@ -11,6 +11,7 @@
 #include "card.cpp"
 #include <ctime>
 #include <iostream>
+#include <algorithm> 
 using std::cout;
 using std::cin;
 using std::endl;
