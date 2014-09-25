@@ -21,7 +21,8 @@ using std::make_move_iterator;
 
 int main()
 {
-	playGame();
+	Game main;
+	main.playGame();
 	return 0;
 }
 	
