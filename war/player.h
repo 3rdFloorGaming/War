@@ -22,6 +22,7 @@ public:
 	int numCards();
 	int warsWon;
 	int points;
+	bool WinsByWars();
 private:
 	vector<Card> deck;
 };

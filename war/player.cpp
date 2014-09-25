@@ -24,3 +24,9 @@ int Player:: numCards()
 {
 	return deck.size();
 }
+
+bool Player::WinsByWars()
+{
+	if(warsWon>=WARSTOWIN) return true;
+	return false;
+}

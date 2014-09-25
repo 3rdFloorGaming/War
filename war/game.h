@@ -17,6 +17,7 @@
 #include <iterator>
 #include "card.h"
 #include "player.h"
+#include "gamevariables.h"
 
 using std::cout;
 using std::cin;
@@ -41,11 +42,13 @@ public:
 };
 
 
+//Functions to allow 2-4 players, incompatible with the rest of code in game.cpp (major reconstruction needed to implement these)
 /*
 vector <Card> makeShuffledDeck()
 void givePlayersCards( vector &p1, vector &p2) //Function that will take a huge chunk out of main to generate decks for players
 void givePlayersCards( vector &p1, vector &p2, vector &p3) //Overloaded to accamodate any number of players
 void givePlayersCards( vector &p1, vector &p2, vector &p3, vector &p4) 
 */
+
 #endif
 
