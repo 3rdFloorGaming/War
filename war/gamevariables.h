@@ -10,10 +10,10 @@
 #define ___GAMEVARIABLES_H
 
 //Allows play with alternate game rules where a player can win by winning a certain number of wars
-bool winCondition_winByWars = true;
+//bool winCondition_winByWars = true;
 
 //How many wars are needed to win with above game condition
-const int WARSTOWIN = 5; 
+//const int WARSTOWIN = 5; 
 
 
 #endif

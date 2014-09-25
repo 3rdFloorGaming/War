@@ -1,7 +1,17 @@
-﻿  game.cpp
-  Generating Code...
-  Compiling...
-  war.cpp
-  player.cpp
-c:\users\craneza1\documents\github\war\war\player.cpp(30): error C2065: 'WARSTOWIN' : undeclared identifier
-  Generating Code...
+﻿Build started 9/25/2014 4:12:37 PM.
+     1>Project "C:\Users\AlfordZW1\Desktop\War\war\war.vcxproj" on node 2 (Build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\war.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+         war.vcxproj -> C:\Users\AlfordZW1\Desktop\War\Debug\war.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\war.unsuccessfulbuild".
+         Touching "Debug\war.lastbuildstate".
+     1>Done Building Project "C:\Users\AlfordZW1\Desktop\War\war\war.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.06

@@ -27,6 +27,6 @@ int Player:: numCards()
 
 bool Player::WinsByWars()
 {
-	if(warsWon>=WARSTOWIN) return true;
+	//if(warsWon>=WARSTOWIN) return true;
 	return false;
 }
