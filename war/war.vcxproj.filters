@@ -30,9 +30,6 @@
     <ClInclude Include="..\..\..\..\Desktop\War Objects\game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Desktop\War Objects\player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="gamevariables.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -48,9 +45,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="card.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

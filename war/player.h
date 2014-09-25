@@ -9,11 +9,7 @@
 #ifndef ___PLAYER_H
 #define ___PLAYER_H
 
-#include <vector>
-#include "card.h"
-#include "game.h"
-#include "gamevariables.h"
-using std::vector;
+
 
 
 class Player
@@ -26,6 +22,7 @@ public:
 	int points;
 	bool winsByWars();
 	bool lossByCards();
+	friend bool checkForWinner(Player p1, Player p2);
 private:
 	vector<Card> deck;
 };

@@ -16,8 +16,7 @@
 #include <cstdlib>
 #include <iterator>
 #include "card.h"
-#include "player.h"
-
+#include "gamevariables.h"
 
 using std::cout;
 using std::cin;
@@ -27,7 +26,7 @@ using std::vector;
 using std::string;
 using std::random_shuffle;
 using std::make_move_iterator;
-
+using std::vector;
 
 
 class Game
@@ -39,11 +38,25 @@ public:
 	string compareCards(Card p1, Card p2);
 	//Runs war card game simulation
 	void playGame();
+	friend bool checkForWinner(Player p1, Player p2);
 
-	//A function that is part of play game that will check if either player has satisfied win conitions
-	bool checkForWinner(Player p1, Player p2);
+
 };
 
+class Player
+{
+public:
+	Player ();
+	Player (vector<Card> deckA);
+	int numCards();
+	int warsWon;
+	int points;
+	bool winsByWars();
+	bool lossByCards();
+	friend bool checkForWinner(Player p1, Player p2);
+private:
+	vector<Card> deck;
+};
 
 
 #endif
