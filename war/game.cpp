@@ -9,6 +9,61 @@ Description:  This file implements the game rules and functions of play for the 
 
 
 
+Player::Player()
+{
+	deck.resize(0);
+}
+
+Player::Player(vector<Card> deckA)
+{
+	deck=deckA;
+	
+}
+
+int Player::numCards()
+{
+	return deck.size();
+}
+
+bool Player::winsByWars()
+{
+	if(warsWon>=WARSTOWIN) return true;
+	return false;
+}
+
+bool Player::lossByCards()
+{
+	if(numCards()==0) return true;
+	return false;
+}
+
+
+bool checkForWinner(Player p1, Player p2)
+{
+	if(p1.winsByWars())
+	{
+		cout << "Player 1 has won "<< WARSTOWIN<< "wars!\n";
+		cout << "Player 1 wins the game!" << endl;
+		return true;
+	}
+	if(p2.winsByWars())
+	{
+		cout << "Player 2 has won "<< WARSTOWIN<< "wars!\n";
+		cout << "Player 2 wins the game!" << endl;
+		return true;
+	}
+	if(p1.lossByCards())
+	{
+		cout << "Player 1 has no more cards, Player 2 wins the game!" << endl;
+		return true;
+	}
+	if(p2.lossByCards())
+	{
+		cout << "Player 2 has no more cards, Player 1 wins the game!" << endl;
+		return true;
+	}
+	return false;
+}
 //Makes deck
 vector<Card> Game::makeDeck()
 { 
@@ -187,34 +242,6 @@ void Game::playGame()
 	}
 
 }
-
-Player::Player()
-{
-	deck.resize(0);
-}
-
-Player::Player(vector<Card> deckA)
-{
-	deck=deckA;
-	
-}
-
-int Player:: numCards()
-{
-	return deck.size();
-}
-
-bool Player::winsByWars()
-{
-	if(warsWon>=WARSTOWIN) return true;
-	return false;
-}
-
-bool Player::lossByCards()
-{
-	if(numCards()==0) return true;
-}
-
 
 
 

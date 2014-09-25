@@ -28,21 +28,6 @@ using std::random_shuffle;
 using std::make_move_iterator;
 using std::vector;
 
-
-class Game
-{
-public:
-	//Creates deck to use in game
-	vector<Card> makeDeck();
-	//Compares cards played by each player
-	string compareCards(Card p1, Card p2);
-	//Runs war card game simulation
-	void playGame();
-	friend bool checkForWinner(Player p1, Player p2);
-
-
-};
-
 class Player
 {
 public:
@@ -57,6 +42,20 @@ public:
 private:
 	vector<Card> deck;
 };
+
+class Game
+{
+public:
+	//Creates deck to use in game
+	vector<Card> makeDeck();
+	//Compares cards played by each player
+	string compareCards(Card p1, Card p2);
+	//Runs war card game simulation
+	void playGame();
+
+};
+
+
 
 
 #endif
