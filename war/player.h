@@ -14,7 +14,7 @@ Z
 using std::vector;
 
 
-class Player()
+class Player
 {
 public:
 	Player ();
@@ -24,9 +24,9 @@ public:
 	int numCards();
 	//void shuffleDeck();		Same issue as below, otherwise just push_back
 private:
-	vector<Card>() deck;
+	vector<Card> deck;
 	//vector<Card>() discard;	only use this line if we are going
 	//							to shuffle the cards that a player wins
-}
+};
 
 #endif
