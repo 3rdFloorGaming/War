@@ -15,6 +15,8 @@ public:
 	//Compares cards played by each player
 	string compareCards(Card p1, Card p2);
 	//Creates deck to use in game
+	void tieGame(vector <Card> & p1deck,vector <Card> & p2deck);
+	//Will run through tie game scenario as many times as necessary
 	vector<Card> makeDeck();
 	int getP1_Score() {return p1_score;}
 	int getP2_Score() {return p2_score;}
