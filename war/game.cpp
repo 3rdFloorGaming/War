@@ -158,7 +158,7 @@ void Game::playGame()
 			}while(compareCards(deck.back(), player2.back()) == "war");
 
 			//Again checks who has "won" the round
-			if((compareCards(deck.back(), player2.back())) == "p1")
+			if((compareCards(tableStack[tableStack.size()-2], tableStack[tableStack.size()-1])) == "p1")
 			{
 				cout << "Player 1 wins war!\n";
 				//Adds all of the cards used in the war to player 1's deck
@@ -166,7 +166,7 @@ void Game::playGame()
 				p1_score += war_score;
 
 			}
-			else if((compareCards(deck.back(), player2.back())) == "p2")
+			else if((compareCards(tableStack[tableStack.size()-2], tableStack[tableStack.size()-1])) == "p2")
 			{
 				cout << "Player 2 wins!\n";
 				//Adds all of the cards used in the war to player 1's deck
