@@ -9,6 +9,12 @@
 #include <string>
 #include "card.h"
 #include "card.cpp"
+#include <ctime>
+#include <iostream>
+using std::cout;
+using std::cin;
+using std::endl;
+using std::ctime;
 using std::vector;
 using std::string;
 
