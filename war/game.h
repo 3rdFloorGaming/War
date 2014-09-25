@@ -5,6 +5,12 @@
 #define ___GAME_H
 //string compareCards(Card p1, Card p2); //Compares cards played by each player
 //vector<Card> makeDeck(); //Creates deck to use in game
+#include <vector>
+#include <string>
+#include "card.h"
+#include "card.cpp"
+using std::vector;
+using std::string;
 
 
 class Game
