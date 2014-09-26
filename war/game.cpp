@@ -111,75 +111,94 @@ void Game::playGame()
 		}
 		else if((compareCards(deck.back(), player2.back())) == "war")
 		{
-			cout << "WAR!\n";
+			if (deck.size() > 3 && player2.size() > 3)
+			{
+				cout << "WAR!\n";
 
-			//Creates vector to hold cards on table while "War" (tie) is played out
-			//The tied cards stay on the table, then each player places a "face down" card
-			//on top of those (pop another card from the deck), then places another "face up"
-			//card on the stack. If one player then wins, they collect all six cards. If another
-			//"war" occurs, more cards are added.
-			vector<Card> tableStack;
+				//Creates vector to hold cards on table while "War" (tie) is played out
+				//The tied cards stay on the table, then each player places a "face down" card
+				//on top of those (pop another card from the deck), then places another "face up"
+				//card on the stack. If one player then wins, they collect all six cards. If another
+				//"war" occurs, more cards are added.
+				vector<Card> tableStack;
 
-			tableStack.push_back(deck.back());
-			tableStack.push_back(player2.back());
-
-			//Pops first cards played
-			deck.pop_back();
-			player2.pop_back();
-
-			//Adds 2 to war_score for both cards played
-			war_score+=2;
-
-			do{
-				//Adds "face down" cards to vector
 				tableStack.push_back(deck.back());
 				tableStack.push_back(player2.back());
 
-				//Pops face down cards played
+				//Pops first cards played
 				deck.pop_back();
 				player2.pop_back();
 
-				war_score++;
+				//Adds 2 to war_score for both cards played
+				war_score+=2;
 
-				//Adds "face up" cards to vector
-				tableStack.push_back(deck.back());
-				tableStack.push_back(player2.back());
+				do{
+					//Adds "face down" cards to vector
+					tableStack.push_back(deck.back());
+					tableStack.push_back(player2.back());
 
-				//Displays the cards that each player plays
-				cout << "Player One plays " << deck.back().name() << endl;
-				cout << "Player Two plays " << player2.back().name() << endl;
+					//Pops face down cards played
+					deck.pop_back();
+					player2.pop_back();
 
-				//Pops face up cards played
-				deck.pop_back();
-				player2.pop_back();
+					war_score++;
 
-				war_score++;
+					//Adds "face up" cards to vector
+					tableStack.push_back(deck.back());
+					tableStack.push_back(player2.back());
 
-			}while((compareCards(tableStack[tableStack.size()-2], tableStack[tableStack.size()-1])) == "war");
+					//Displays the cards that each player plays
+					cout << "Player One plays " << deck.back().name() << endl;
+					cout << "Player Two plays " << player2.back().name() << endl;
 
-			//Again checks who has "won" the round
-			if((compareCards(tableStack[tableStack.size()-2], tableStack[tableStack.size()-1])) == "p1")
-			{
-				cout << "Player 1 wins war!\n";
-				//Adds all of the cards used in the war to player 1's deck
-				deck.insert(deck.begin(),tableStack.begin(), tableStack.end());
-				p1_score += war_score;
+					//Pops face up cards played
+					deck.pop_back();
+					player2.pop_back();
+
+					war_score++;
+
+				}while((compareCards(tableStack[tableStack.size()-2], tableStack[tableStack.size()-1])) == "war");
+
+				//Again checks who has "won" the round
+				if((compareCards(tableStack[tableStack.size()-2], tableStack[tableStack.size()-1])) == "p1")
+				{
+					cout << "Player 1 wins war!\n";
+					//Adds all of the cards used in the war to player 1's deck
+					deck.insert(deck.begin(),tableStack.begin(), tableStack.end());
+					p1_score += war_score;
+
+				}
+				else if((compareCards(tableStack[tableStack.size()-2], tableStack[tableStack.size()-1])) == "p2")
+				{
+					cout << "Player 2 wins!\n";
+					//Adds all of the cards used in the war to player 1's deck
+					player2.insert(player2.begin(),tableStack.begin(), tableStack.end());
+					p2_score += war_score;
+				}
+
+				//Resets war_score to 0, to prepare for next war
+				war_score = 0;
+
+				//Empties the tableStack vector and prepares it for next war
+				tableStack.clear();
 
 			}
-			else if((compareCards(tableStack[tableStack.size()-2], tableStack[tableStack.size()-1])) == "p2")
+			else if (deck.size() < 4)
+			//if player one's deck does not have enough cards to play war, he forfeits the game.
 			{
-				cout << "Player 2 wins!\n";
-				//Adds all of the cards used in the war to player 1's deck
-				player2.insert(player2.begin(),tableStack.begin(), tableStack.end());
-				p2_score += war_score;
+				cout << "WAR" << endl;
+				deck.resize(0); //resize the deck of the loser to 0 to break the while loop.
+				player2.resize(52); // resizes winner's deck to the full deck's size. 
+				cout << "Player 1 does not have enough cards to go to WAR!" << endl;
 			}
-
-			//Resets war_score to 0, to prepare for next war
-			war_score = 0;
-
-			//Empties the tableStack vector and prepares it for next war
-			tableStack.clear();
-
+			else if (player2.size() < 4)
+			//if player two's deck does not have enough cards to play war, he forfeits the game.
+			{
+				cout << "WAR" << endl;
+				player2.resize(0);
+				deck.resize(52);
+				cout << "Player 2 does not have enough cards to go to WAR!" << endl;
+			}
 			//Diplays size of each players' deck.
 			cout << "Player ONE DECK: " << deck.size() << endl;
 			cout << "Player TWO DECK: " << player2.size() << endl;
