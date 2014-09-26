@@ -33,9 +33,6 @@
     <ClInclude Include="..\..\..\..\Desktop\War Objects\player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gamevariables.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

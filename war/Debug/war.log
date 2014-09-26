@@ -1,8 +1,2 @@
-﻿  war.cpp
-  stdafx.cpp
-  player.cpp
-  game.cpp
-  card.cpp
-  Generating Code...
-  LINK : C:\Users\craneza1\Documents\GitHub\War\Debug\war.exe not found or not built by the last incremental link; performing full link
+﻿  game.cpp
   war.vcxproj -> C:\Users\craneza1\Documents\GitHub\War\Debug\war.exe
