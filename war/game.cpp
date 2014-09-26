@@ -155,7 +155,7 @@ void Game::playGame()
 
 				war_score++;
 
-			}while(compareCards(deck.back(), player2.back()) == "war");
+			}while((compareCards(tableStack[tableStack.size()-2], tableStack[tableStack.size()-1])) == "war");
 
 			//Again checks who has "won" the round
 			if((compareCards(tableStack[tableStack.size()-2], tableStack[tableStack.size()-1])) == "p1")
