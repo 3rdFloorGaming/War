@@ -24,3 +24,8 @@ int Player:: numCards()
 {
 	return deck.size();
 }
+
+string Player::playCard()
+{
+	return deck.back().name();
+}

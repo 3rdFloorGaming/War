@@ -20,9 +20,9 @@ public:
 	Player ();
 	Player (vector<Card> deckA);
 	int numCards();
-	int warsWon;
-	int points;
+	int score;
 	bool WinsByWars();
+	string playCard();
 private:
 	vector<Card> deck;
 };

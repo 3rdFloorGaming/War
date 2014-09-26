@@ -53,8 +53,6 @@ void Game::playGame()
 	//Random seed used for shuffling deck
 	srand(unsigned (time(0)));
 
-	int p1_score = 0;
-	int p2_score = 0;
 
 	//Int that holds total number of points won in a "war" (tie) scenario
 	int war_score = 0;
@@ -73,8 +71,8 @@ void Game::playGame()
 	while(deck.size() > 0 && player2.size() > 0)
 	{
 		//Displays the cards that each player plays
-		cout << "Player One plays " << deck.back().name() << endl;
-		cout << "Player Two plays " << player2.back().name() << endl;
+		cout << "Player One plays " << p1.playCard() << endl;
+		cout << "Player Two plays " << p2.playCard() << endl;
 
 		//Compares cards played
 		//Once cards are compared, game moves forward accordingly.
@@ -90,7 +88,7 @@ void Game::playGame()
 			deck.pop_back();
 			player2.pop_back();
 
-			p1_score++;
+			p1.score++;
 			p1= deck;
 			p2= player2;
 
@@ -108,7 +106,7 @@ void Game::playGame()
 			deck.pop_back();
 			player2.pop_back();
 
-			p2_score++;
+			p2.score++;
 			p1= deck;
 			p2= player2;
 
@@ -170,7 +168,7 @@ void Game::playGame()
 				cout << "Player 1 wins war!\n";
 				//Adds all of the cards used in the war to player 1's deck
 				deck.insert(deck.begin(),tableStack.begin(), tableStack.end());
-				p1_score += war_score;
+				p1.score += war_score;
 				p1= deck;
 				p2= player2;
 
@@ -180,7 +178,7 @@ void Game::playGame()
 				cout << "Player 2 wins!\n";
 				//Adds all of the cards used in the war to player 1's deck
 				player2.insert(player2.begin(),tableStack.begin(), tableStack.end());
-				p2_score += war_score;
+				p2.score += war_score;
 				p1= deck;
 				p2= player2;
 
@@ -204,8 +202,8 @@ void Game::playGame()
 	}
 
 	//Displays final results
-	cout << "Player 1: " << p1_score << endl;
-	cout << "Player 2: " << p2_score << endl;
+	cout << "Player 1: " << p1.score << endl;
+	cout << "Player 2: " << p2.score << endl;
 
 	if(p1.numCards()>0) cout << "Player 1 wins the game!" << endl;
 	else cout << "Player 2 wins the game!" << endl;

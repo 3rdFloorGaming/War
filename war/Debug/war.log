@@ -1,2 +1,7 @@
-﻿  game.cpp
+﻿  player.cpp
+  game.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  war.cpp
+  LINK : C:\Users\craneza1\Documents\GitHub\War\Debug\war.exe not found or not built by the last incremental link; performing full link
   war.vcxproj -> C:\Users\craneza1\Documents\GitHub\War\Debug\war.exe
