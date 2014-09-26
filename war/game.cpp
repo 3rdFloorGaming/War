@@ -139,7 +139,7 @@ void Game::playGame()
 				deck.pop_back();
 				player2.pop_back();
 
-				war_score+=2;
+				war_score++;
 
 				//Adds "face up" cards to vector
 				tableStack.push_back(deck.back());
@@ -153,7 +153,7 @@ void Game::playGame()
 				deck.pop_back();
 				player2.pop_back();
 
-				war_score+=2;
+				war_score++;
 
 			}while(compareCards(deck.back(), player2.back()) == "war");
 
